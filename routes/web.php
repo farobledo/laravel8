@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactanosController;
 use App\Http\Controllers\CursoController;
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\HomeControlller;
@@ -16,24 +17,18 @@ use  App\Http\Controllers\HomeControlller;
 |
 */
 
-Route::get('/', HomeControlller::class);
+Route::get('/', HomeControlller::class)->name('home');
 
-Route::get('cursos', [CursoController::class, 'index']);
+Route::resource('cursos', CursoController::class);
 
-Route::get('cursos/create', [CursoController::class, 'create']);
+Route::view('nosotros', 'nosotros')->name('nosotros');
 
-Route::get('cursos/{curso}', [CursoController::class, 'show']);
+Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
+
+Route::post('contactanos',  [ContactanosController::class, 'store'])->name('contactanos.store');
 
 
 
+//este codigo es para cambiar las url con otro nombre que le queramos dar al proyecto
+//Route::resource('asignaturas', CursoController::class)->parameters(['asignaturas' => 'curso'])->names('cursos');
 
-/*Route::get('cursos/{curso}/{categiria?}', function ($curso, $categoria = null) {
-
-    if($categoria){
-
-    }else{
-
-    }
-
-    return "Bienvenido al curso: $curso, de la categoria $categoria";
-});*/

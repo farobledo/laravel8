@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\curso;
+use App\Models\Curso;
 use App\Models\User;
 
 
