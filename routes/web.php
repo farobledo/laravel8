@@ -32,3 +32,7 @@ Route::post('contactanos',  [ContactanosController::class, 'store'])->name('cont
 //este codigo es para cambiar las url con otro nombre que le queramos dar al proyecto
 //Route::resource('asignaturas', CursoController::class)->parameters(['asignaturas' => 'curso'])->names('cursos');
 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
